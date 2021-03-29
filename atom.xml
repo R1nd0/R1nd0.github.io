@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-03-27T16:53:48.855Z</updated>
+  <updated>2021-03-29T04:00:58.873Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2021/03/28/2021DASCTF-Mar-pwn-wp/"/>
     <id>http://example.com/2021/03/28/2021DASCTF-Mar-pwn-wp/</id>
     <published>2021-03-27T16:29:52.000Z</published>
-    <updated>2021-03-27T16:53:48.855Z</updated>
+    <updated>2021-03-29T04:00:58.873Z</updated>
     
     
     <summary type="html">&lt;p&gt;说实话最后一个小时还放题属实闪到了我的老腰了，不过为了ak还是去试了，17:59:19惊险交题，成了比赛时间内唯一一个ak了pwn的hhh&lt;/p&gt;</summary>
