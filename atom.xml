@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-04-30T17:22:34.131Z</updated>
+  <updated>2021-05-17T14:07:36.645Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CISCN2021线上赛_pwn</title>
+    <link href="http://example.com/2021/05/17/CISCN2021%E7%BA%BF%E4%B8%8A%E8%B5%9B-pwn/"/>
+    <id>http://example.com/2021/05/17/CISCN2021%E7%BA%BF%E4%B8%8A%E8%B5%9B-pwn/</id>
+    <published>2021-05-17T13:53:32.000Z</published>
+    <updated>2021-05-17T14:07:36.645Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;太菜了，后面学一学llvm&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="ctf" scheme="http://example.com/categories/ctf/"/>
+    
+    
+    <category term="pwn" scheme="http://example.com/tags/pwn/"/>
+    
+  </entry>
   
   <entry>
     <title>2021蓝帽杯线上赛pwn_wp</title>
