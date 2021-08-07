@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-08-02T07:50:31.333Z</updated>
+  <updated>2021-08-07T05:20:47.020Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021XMAN选拔赛</title>
+    <link href="http://example.com/2021/08/07/2021XMAN%E9%80%89%E6%8B%94%E8%B5%9B/"/>
+    <id>http://example.com/2021/08/07/2021XMAN%E9%80%89%E6%8B%94%E8%B5%9B/</id>
+    <published>2021-08-07T05:02:50.000Z</published>
+    <updated>2021-08-07T05:20:47.020Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;估计很多师傅都倒在了libc版本上，hhh&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="ctf" scheme="http://example.com/categories/ctf/"/>
+    
+    
+    <category term="pwn" scheme="http://example.com/tags/pwn/"/>
+    
+  </entry>
   
   <entry>
     <title>2021巅峰极客</title>
